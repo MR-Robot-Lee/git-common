@@ -55,4 +55,8 @@ git reflog | 查看过往和通过 `git reset` 回滚的历史。配合 `git res
 未 `git merger dev` 之前，如果 `dev` 分支进行了提交，此时利用 `git log` 查看 `dev` 分支的提交历史。再通过 `git checkout master` 切回 `master` 分支。同样用 `git log` 命令查看 `master` 分支的提交历史。经过对比会发现 `master` 分支的提交历史比 `dev` 分支要少。
 `git merge dev` 之后，即把 `dev` 分支合并到 `master` 分支之后。再通过 `git log` 命令去查看 `dev` 和 `master` 分支的提交历史。会发现他们的提交历史已经同步了.
 
-
+### 多人协同时， 解决提交冲突
+假设一个项目有多人协同开发：老王和小李。老王在小李提交前，往远端仓库的 master 分支提交过一次代码了。此时小李再提交代码给远端仓库的时候。就会发生冲突。为了避免冲突，我们通常的操作为：
+1. 用 `git pull` 命令把远程仓库的代码(即老王提交过后的代码)拉取到小李的本地。
+> `git pull` 命令等同于 `git pull origin` 。因为 `git` 会默认拉取名为 `origin` 仓库的代码。
+`git pull` = `git fetch` + `git merge origin/master（如果和我们发生冲突的远端仓库不是 origin 仓库，分支也不是 master 分支，比如仓库名为 coding(仓库名可通过 git remote add 命令添加), 远端仓库的分支为 dev 分支， 那么这里就应该是 git merge coding/dev）`;
