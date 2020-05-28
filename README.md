@@ -51,4 +51,8 @@ git reflog | 查看过往和通过 `git reset` 回滚的历史。配合 `git res
 
 切换分支所用命令为: **`git checkout master`**.经过此命令，用户当前所在分支就会回到 `master` 主分支。可通过 `git branch -v` 命令查看哪个分支前有 `*` 号。
 
-此时执行 `git merge dev` 表示将 `dev` 分支合并到 用户当前所在的分支 即 `master`.
+此时执行 `git merge dev` 表示将 `dev` 分支合并到 用户当前所在的分支 即 `master`. 
+未 `git merger dev` 之前，如果 `dev` 分支进行了提交，此时利用 `git log` 查看 `dev` 分支的提交历史。再通过 `git checkout master` 切回 `master` 分支。同样用 `git log` 命令查看 `master` 分支的提交历史。经过对比会发现 `master` 分支的提交历史比 `dev` 分支要少。
+`git merge dev` 之后，即把 `dev` 分支合并到 `master` 分支之后。再通过 `git log` 命令去查看 `dev` 和 `master` 分支的提交历史。会发现他们的提交历史已经同步了.
+
+
