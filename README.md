@@ -33,3 +33,22 @@ git reset A的版本号
 git log | 查看过往的提交历史,查看不到 `git reset 版本号` 回退过的历史记录 | git log --pretty=oneline `git log` 后面可以跟参数来实现版本历史的格式化
 git reflog | 查看过往和通过 `git reset` 回滚的历史。配合 `git reset` 功能可以实现版本号向已回滚的版本再次滚回 | 后面是否可以跟参数，待完善
 
+### 删除某次提交历史 `git revert`
+格式:`git revert 版本号`
+> `git revert 版本号` 后，会进入编辑模式。在该模式下输入`:wq`就会退出编辑模式
+
+### 创建分支 `git checkout -b 分支名称`
+格式: `git checkout -b 分支名称`
+1. `git branch` 列出当前的仓库的所有分支
+2. `git branch -v` 列表当前仓库的所有分支及详情
+3. `git checkout -b dev` 创建一个新的 `dev` 分支
+4. `git branch -v` 再次查看所有的分支。这时会发现除了 `master` 分支。多出一个 `dev` 分支。且 `dev` 前面有个 `*` 代表用户当前所在的分支为 `dev` 分支。如果此时去提交，则所有的提交都是在 `dev` 分支上进行。不会影响到主分支 `master`
+
+### 合并分支 `git merge`
+格式: `git merge 被合并的分支名`
+
+要合并之前，先要从 `dev` 分支切换回 `master` 分支。
+
+切换分支所用命令为: **`git checkout master`**.经过此命令，用户当前所在分支就会回到 `master` 主分支。可通过 `git branch -v` 命令查看哪个分支前有 `*` 号。
+
+此时执行 `git merge dev` 表示将 `dev` 分支合并到 用户当前所在的分支 即 `master`.
